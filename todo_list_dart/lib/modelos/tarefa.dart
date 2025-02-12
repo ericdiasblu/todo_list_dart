@@ -1,7 +1,7 @@
 import 'dart:io';
 
 class Tarefa {
-  late int idTarefa;
+  late int idTarefa = 0;
   late String descTarefa;
   String statusTarefa = "Pendente";
 
@@ -20,9 +20,7 @@ class Tarefa {
   List<Map<String,dynamic>> listaTarefa = [];
   
   void adicionarTarefa() {
-    print("Digite o Id da Tarefa: ");
-    String? inputId = stdin.readLineSync();
-    idTarefa = int.parse(inputId!);
+    idTarefa++;
 
     print("Digite o nome da tarefa: ");
     String? inputTarefa = stdin.readLineSync();
