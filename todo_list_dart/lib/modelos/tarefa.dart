@@ -6,15 +6,12 @@ class Tarefa {
   String statusTarefa = "Pendente";
 
   int get getIdTarefa => this.idTarefa;
-
   set setIdTarefa(int idTarefa) => this.idTarefa = idTarefa;
 
   String get getDescTarefa => this.descTarefa;
-
   set setDescTarefa(String descTarefa) => this.descTarefa = descTarefa;
 
   String get getStatusTarefa => this.statusTarefa;
-
   set setStatusTarefa(String statusTarefa) => this.statusTarefa = statusTarefa;
 
   List<Map<String,dynamic>> listaTarefa = [];
@@ -41,10 +38,12 @@ class Tarefa {
   }
 
   void concluirTarefa() {
-    print("Digite o Id da tarefa à ser concluída: ");
-    String? inputId = stdin.readLineSync();
-    int idConcluir = int.parse(inputId!);
-
+    int idConcluir = -1;
+    do{
+      print("Digite o Id da tarefa à ser concluída: ");
+      String? inputId = stdin.readLineSync();
+      idConcluir = int.parse(inputId!);
+    }while(idConcluir < 0);
     for(var tarefa in listaTarefa) {
       if(tarefa['idTarefa'] == idConcluir) {
         tarefa['statusTarefa'] = "Concluída";
@@ -53,12 +52,14 @@ class Tarefa {
   }
 
   void removerTarefa() {
-    print("Digite o Id da tarefa à ser removida: ");
+    int idRemover = -1;
+    do {
+     print("Digite o Id da tarefa à ser removida: ");
      String? inputId = stdin.readLineSync();
-     int idRemover = int.parse(inputId!);
-     if(idRemover > 0) {
-        listaTarefa.removeAt(idRemover-1);
-        print("A tarefa do Id: $idRemover foi removida com sucesso!");
-     }
+     idRemover = int.parse(inputId!);
+    } while(idRemover < 0);
+     listaTarefa.removeAt(idRemover-1);
+     print("A tarefa do Id: $idRemover foi removida com sucesso!");
+     
   }
 }

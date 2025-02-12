@@ -4,5 +4,4 @@ void main() {
 
   Menu menu = Menu();
   menu.selecionarOpcao();
-
 }
