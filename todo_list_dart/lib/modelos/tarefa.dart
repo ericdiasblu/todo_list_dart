@@ -50,7 +50,6 @@ class Tarefa {
         tarefa['statusTarefa'] = "Concluída";
       }
     }
-
   }
 
   void removerTarefa() {
