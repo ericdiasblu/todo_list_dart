@@ -36,16 +36,23 @@ class Tarefa {
   }
 
   void listarTarefa() {
+    print("Lista de tarefas:");
     for (var tarefa in listaTarefa) {
       print("[${tarefa['statusTarefa']}] ${tarefa['idTarefa']} - ${tarefa['descTarefa']}");
     }
   }
 
   void concluirTarefa() {
+    print("Digite o Id da tarefa à ser concluída: ");
+    String? inputId = stdin.readLineSync();
+    int idConcluir = int.parse(inputId!);
 
   }
 
   void removerTarefa() {
+    print("Digite o Id da tarefa à ser removida: ");
+     String? inputId = stdin.readLineSync();
+     int idRemover = int.parse(inputId!);
     
   }
 

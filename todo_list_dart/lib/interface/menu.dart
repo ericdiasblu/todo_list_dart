@@ -21,14 +21,13 @@ void selecionarOpcao() {
   tarefa.adicionarTarefa();
   break;
   case 2:
-  print("Lista de tarefas:");
   tarefa.listarTarefa();
   break;
   case 3:
-  print("Digite a tarefa à ser concluída: ");
+  tarefa.concluirTarefa();
   break;
   case 4:
-  print("Digite a tarefa à ser removida: ");
+  tarefa.removerTarefa();
   break;
   case 5:
   break;
