@@ -44,6 +44,7 @@ class Tarefa {
       String? inputId = stdin.readLineSync();
       idConcluir = int.parse(inputId!);
     }while(idConcluir < 0);
+
     for(var tarefa in listaTarefa) {
       if(tarefa['idTarefa'] == idConcluir) {
         tarefa['statusTarefa'] = "Concluída";
@@ -58,6 +59,7 @@ class Tarefa {
      String? inputId = stdin.readLineSync();
      idRemover = int.parse(inputId!);
     } while(idRemover < 0);
+    
      listaTarefa.removeAt(idRemover-1);
      print("A tarefa do Id: $idRemover foi removida com sucesso!");
      
