@@ -53,7 +53,7 @@ class Tarefa {
     print("Digite o Id da tarefa à ser removida: ");
      String? inputId = stdin.readLineSync();
      int idRemover = int.parse(inputId!);
-     if(idRemover != 0 || idRemover < 0) {
+     if(idRemover > 0) {
         listaTarefa.removeAt(idRemover-1);
         print("A tarefa do Id: $idRemover foi removida com sucesso!");
      }
