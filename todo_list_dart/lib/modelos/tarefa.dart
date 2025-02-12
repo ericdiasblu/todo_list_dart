@@ -47,6 +47,12 @@ class Tarefa {
     String? inputId = stdin.readLineSync();
     int idConcluir = int.parse(inputId!);
 
+    for(var tarefa in listaTarefa) {
+      if(tarefa['idTarefa'] == idConcluir) {
+        tarefa['statusTarefa'] = "Concluída";
+      }
+    }
+
   }
 
   void removerTarefa() {

@@ -30,6 +30,7 @@ void selecionarOpcao() {
   tarefa.removerTarefa();
   break;
   case 5:
+  print("Programa finalizado!");
   break;
   
     }
