@@ -1,32 +1,33 @@
 import 'dart:io';
 
 class Tarefa {
-  late int idTarefa = 0;
-  late String descTarefa;
-  String statusTarefa = "Pendente";
+  int _idTarefa = 0;
+  String _descTarefa = "";
+  String _statusTarefa = "Pendente";
 
-  int get getIdTarefa => this.idTarefa;
-  set setIdTarefa(int idTarefa) => this.idTarefa = idTarefa;
+  // Getters e Setters
+  int get idTarefa => _idTarefa;
+  set idTarefa(int id) => _idTarefa = id;
 
-  String get getDescTarefa => this.descTarefa;
-  set setDescTarefa(String descTarefa) => this.descTarefa = descTarefa;
+  String get descTarefa => _descTarefa;
+  set descTarefa(String descricao) => _descTarefa = descricao;
 
-  String get getStatusTarefa => this.statusTarefa;
-  set setStatusTarefa(String statusTarefa) => this.statusTarefa = statusTarefa;
+  String get statusTarefa => _statusTarefa;
+  set statusTarefa(String status) => _statusTarefa = status;
 
-  List<Map<String,dynamic>> listaTarefa = [];
-  
+  List<Map<String, dynamic>> listaTarefa = [];
+
   void adicionarTarefa() {
-    idTarefa++;
+    _idTarefa++; 
 
     print("Digite o nome da tarefa: ");
     String? inputTarefa = stdin.readLineSync();
-    descTarefa = inputTarefa!;
+    _descTarefa = inputTarefa!;
 
     listaTarefa.add({
-      "idTarefa": idTarefa,
-      "descTarefa": descTarefa,
-      "statusTarefa": statusTarefa,
+      "idTarefa": _idTarefa,
+      "descTarefa": _descTarefa,
+      "statusTarefa": _statusTarefa,
     });
   }
 
@@ -38,30 +39,23 @@ class Tarefa {
   }
 
   void concluirTarefa() {
-    int idConcluir = -1;
-    do{
-      print("Digite o Id da tarefa à ser concluída: ");
-      String? inputId = stdin.readLineSync();
-      idConcluir = int.parse(inputId!);
-    }while(idConcluir < 0);
+    print("Digite o Id da tarefa a ser concluída: ");
+    String? inputId = stdin.readLineSync();
+    int idConcluir = int.parse(inputId!);
 
-    for(var tarefa in listaTarefa) {
-      if(tarefa['idTarefa'] == idConcluir) {
+    for (var tarefa in listaTarefa) {
+      if (tarefa['idTarefa'] == idConcluir) {
         tarefa['statusTarefa'] = "Concluída";
       }
     }
   }
 
   void removerTarefa() {
-    int idRemover = -1;
-    do {
-     print("Digite o Id da tarefa à ser removida: ");
-     String? inputId = stdin.readLineSync();
-     idRemover = int.parse(inputId!);
-    } while(idRemover < 0);
-    
-     listaTarefa.removeAt(idRemover-1);
-     print("A tarefa do Id: $idRemover foi removida com sucesso!");
-     
+    print("Digite o Id da tarefa a ser removida: ");
+    String? inputId = stdin.readLineSync();
+    int idRemover = int.parse(inputId!);
+
+    listaTarefa.removeWhere((tarefa) => tarefa['idTarefa'] == idRemover);
+    print("A tarefa do Id: $idRemover foi removida com sucesso!");
   }
 }
