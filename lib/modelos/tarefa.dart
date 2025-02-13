@@ -46,6 +46,7 @@ class Tarefa {
     for (var tarefa in listaTarefa) {
       if (tarefa['idTarefa'] == idConcluir) {
         tarefa['statusTarefa'] = "Concluída";
+        print("A tarefa \"${tarefa['descTarefa']}\" foi concluída com sucesso!");
       }
     }
   }
