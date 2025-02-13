@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:todo_list_dart/modelos/tarefa.dart';
+import '../modelos/tarefa.dart';
 
 class Menu {
 

@@ -1,4 +1,4 @@
-import 'package:todo_list_dart/interface/menu.dart';
+import 'interface/menu.dart';
 
 void main() {
 
