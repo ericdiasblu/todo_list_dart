@@ -15,14 +15,16 @@ class Tarefa {
   String get statusTarefa => _statusTarefa;
   set statusTarefa(String status) => _statusTarefa = status;
 
-  List<Map<String, dynamic>> listaTarefa = []; // Lista que armazena todas as tarefas
+  List<Map<String, dynamic>> listaTarefa =
+      []; // Lista que armazena todas as tarefas
 
   // Método para adicionar uma nova tarefa
   void adicionarTarefa() {
     _idTarefa++; // Incrementa o ID da tarefa para garantir unicidade
 
     print("Digite o nome da tarefa: ");
-    String? inputTarefa = stdin.readLineSync(); // Lê a descrição da tarefa do usuário
+    String? inputTarefa =
+        stdin.readLineSync(); // Lê a descrição da tarefa do usuário
     _descTarefa = inputTarefa!; // Atribui a descrição à variável correspondente
 
     // Adiciona a nova tarefa à lista
@@ -31,15 +33,21 @@ class Tarefa {
       "descTarefa": _descTarefa,
       "statusTarefa": _statusTarefa,
     });
+    print('\x1B[2J\x1B[0;0H'); // Organiza o terminal para melhor vizualização
+    print("Tarefa adicionada com sucesso!");
   }
 
   // Método para listar todas as tarefas cadastradas
   void listarTarefa() {
+    print('\x1B[2J\x1B[0;0H');
+    print("==================================");
     print("Lista de tarefas:");
     for (var tarefa in listaTarefa) {
       // Exibe cada tarefa no formato [status] id - descrição
-      print("[${tarefa['statusTarefa']}] ${tarefa['idTarefa']} - ${tarefa['descTarefa']}");
+      print(
+          "[${tarefa['statusTarefa']}] ${tarefa['idTarefa']} - ${tarefa['descTarefa']}");
     }
+    print("==================================");
   }
 
   // Método para marcar uma tarefa como concluída
@@ -49,9 +57,13 @@ class Tarefa {
     int idConcluir = int.parse(inputId!); // Converte para inteiro
 
     for (var tarefa in listaTarefa) {
-      if (tarefa['idTarefa'] == idConcluir) { // Encontra a tarefa pelo ID
-        tarefa['statusTarefa'] = "Concluída"; // Atualiza o status para "Concluída"
-        print("A tarefa \"${tarefa['descTarefa']}\" foi concluída com sucesso!");
+      if (tarefa['idTarefa'] == idConcluir) {
+        // Encontra a tarefa pelo ID
+        tarefa['statusTarefa'] =
+            "Concluída"; // Atualiza o status para "Concluída"
+        print('\x1B[2J\x1B[0;0H');
+        print(
+            "A tarefa \"${tarefa['descTarefa']}\" foi concluída com sucesso!");
       }
     }
   }
@@ -64,6 +76,7 @@ class Tarefa {
 
     // Remove a tarefa da lista caso o ID seja encontrado
     listaTarefa.removeWhere((tarefa) => tarefa['idTarefa'] == idRemover);
+    print('\x1B[2J\x1B[0;0H');
     print("A tarefa do Id: $idRemover foi removida com sucesso!");
   }
 }

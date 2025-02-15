@@ -7,6 +7,7 @@ class Menu {
 
   // Método responsável por exibir o menu e executar a opção selecionada
   void selecionarOpcao() {
+    print('\x1B[2J\x1B[0;0H'); //  Organizar o terminal para melhor visualização
     Tarefa tarefa = Tarefa(); // Cria uma instância da classe Tarefa
 
     while (opcao != 5) { // Loop que mantém o menu ativo até que o usuário escolha sair
